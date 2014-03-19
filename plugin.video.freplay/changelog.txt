@@ -1,0 +1,28 @@
+14/03/2014 Version 0.1 par SPM
+    - Canal+ OK
+    TODO:
+    	-Icon Addon
+    	-Show only Favorites unseen
+    	-Other channels
+    		-Pluzz
+    		-D8
+    		-D17
+    		-Gully
+    		-HD1
+    		-NT1
+    		Arte
+    		
+    	-Contextual Menu
+    		-Mark as watched
+    		-Download
+    		-Mark All as Watched
+    		-Add to Favorites
+    	-Settings
+    		-Video Quality
+    		-Channels to Display
+    	
+
+
+
+
+
