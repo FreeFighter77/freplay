@@ -1,3 +1,8 @@
+20/03/2014 Version 0.2
+	-Added Arte
+	-Added France TV Pluzz
+	-Added Favorite Management
+
 14/03/2014 Version 0.1 par SPM
     - Canal+ OK
     TODO:
@@ -10,8 +15,13 @@
     		-Gully
     		-HD1
     		-NT1
-    		Arte
-    		
+    		-Arte
+    		-BFM TV
+    		-France 24
+    		-TF1
+    		-M6/W9
+    		-equipe TV
+    		    		
     	-Contextual Menu
     		-Mark as watched
     		-Download
