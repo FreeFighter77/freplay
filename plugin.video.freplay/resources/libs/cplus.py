@@ -92,6 +92,9 @@ def find_categIDs():
 def url_exists(site):
     return site
 
+def getVideoURL(channel,video_URL):
+    return video_URL
+
 def get_video_URL(VIDEOS,show):
     url=''
     bas_debit=''

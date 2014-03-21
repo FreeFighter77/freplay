@@ -17,6 +17,8 @@ ADDON_DATA= xbmc.translatePath( "special://profile/addon_data/%s/" % ADDON_NAME 
 CACHE_DIR = os.path.join( ADDON_DATA, "cache")
 FAVOURITES_FILE = os.path.join( ADDON_DATA, "favourites.json")
 
+VIEWID=xbmcaddon.Addon(ADDON_NAME).getSetting("viewID")
+
 LANG='fr'
 QLTY='hd'
 

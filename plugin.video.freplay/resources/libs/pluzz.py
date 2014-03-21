@@ -49,6 +49,9 @@ def list_shows(channel,folder):
                     shows.append( [channel,video_name,video_name,'','shows'] )
     return shows    
 
+def getVideoURL(channel,video_URL):
+    return video_URL
+
 def list_videos(channel,show_title):
     videos=[] 
     
@@ -83,11 +86,6 @@ def list_videos(channel,show_title):
                 video_infos['Date']      = str(programme['date'].split('-')[2])+'-'+str(programme['date'].split('-')[1])+'-'+str(programme['date'].split('-')[0])
                 video_infos['Premiered'] = video_infos['Date'] 
                 video_name               = video_name+" : "+video_infos['Date']
-            if globalvar.REMOTE_DBG :
-                print 'Programme Name       : '+video_name
-                print 'Programme video URL  : '+video_url
-                print 'Programme image_url  : '+video_image
-                print '------------------------------------------'
             videos.append( [video_url, video_name, video_image] )
 
     

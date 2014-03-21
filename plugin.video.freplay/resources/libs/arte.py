@@ -36,7 +36,8 @@ def list_shows(channel,folder):
                     shows.append( [channel,title,title,'','shows'] )
                     d[title]=title
     return shows
-def getURLVideo(url):
+
+def getVideoURL(channel,url):
     url=urllib2.unquote(url[url.index('videorefFileUrl')+16:]).decode('utf8')
     xml = urllib2.urlopen(url).read()
     xmldoc = minidom.parseString(xml)
@@ -80,5 +81,5 @@ def list_videos(channel,show_title):
         if len(titleTab)>0:
             title=fix_text(titleTab[0])
         if(title==show_title):          
-            videos.append( [getURLVideo(video_url), name, image_url] )
+            videos.append( [video_url, name, image_url] )
     return videos

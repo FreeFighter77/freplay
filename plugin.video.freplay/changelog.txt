@@ -2,6 +2,7 @@
 	-Added Arte
 	-Added France TV Pluzz
 	-Added Favorite Management
+	-Watched items working
 
 14/03/2014 Version 0.1 par SPM
     - Canal+ OK

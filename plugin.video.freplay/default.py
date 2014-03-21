@@ -16,8 +16,6 @@ base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
 args = urlparse.parse_qs(sys.argv[2][1:])
 
-xbmcplugin.setContent(addon_handle, 'movies')
-
 def build_url(query):
     return base_url + '?' + urllib.urlencode(query)
 
@@ -61,15 +59,24 @@ else:
             xbmcplugin.addDirectoryItem(handle=addon_handle, url=url,listitem=li, isFolder=True)
     elif mode[0]=='shows':
         for video_url, video_title, video_icon in globalvar.channels[channel][3].list_videos(channel,param):
-            li = xbmcgui.ListItem(video_title, iconImage=video_icon,thumbnailImage=video_icon)
+            li = xbmcgui.ListItem(video_title, iconImage=video_icon,thumbnailImage=video_icon,path=video_url)
             li.setInfo( type='Video', infoLabels={ "Title": video_title } )            
             li.setProperty('IsPlayable', 'true')
             li.addContextMenuItems([ ('Download', 'XBMC.RunPlugin(%s?mode=dl&channel=%s&param=%s&name=%s)' % (sys.argv[0],200,video_url.encode('utf-8'),video_title)),
                          ], replaceItems=True)
-            xbmcplugin.addDirectoryItem(handle=addon_handle, url=video_url,listitem=li, isFolder=False)
+            url = build_url({'mode': 'play', 'channel': channel, 'param':video_url})
+            xbmcplugin.addDirectoryItem(handle=addon_handle, url=url,listitem=li, isFolder=False)
             xbmcplugin.addSortMethod(addon_handle, xbmcplugin.SORT_METHOD_NONE)
-            xbmcplugin.setPluginCategory(addon_handle, 'show' )
-            xbmcplugin.setContent(addon_handle, 'movies')
+            xbmcplugin.setPluginCategory(addon_handle, 'episodes' )
+            xbmcplugin.setContent(addon_handle, 'episodes')
+        if channel==0 and param=='unseen':
+            notify('Check/Uncheck "Hide Watched" in the left panel',0)
+    elif mode[0]=='play':
+        url=globalvar.channels[channel][3].getVideoURL(channel,param)
+        
+        # Play  video
+        item = xbmcgui.ListItem(path=url)
+        xbmcplugin.setResolvedUrl(addon_handle, True, item)  
     elif mode[0]=='bkm':
         if args['action'][0]=='add':#Add to Favourites
             display = args['display'][0]
@@ -81,4 +88,4 @@ else:
         name = args['name'][0]
         url = args['param'][0]
         utils.download_video(name, url)
-    xbmcplugin.endOfDirectory( handle=int( sys.argv[ 1 ] ), succeeded=True, updateListing=False)
+    xbmcplugin.endOfDirectory( handle=int(addon_handle), succeeded=True, updateListing=False)
